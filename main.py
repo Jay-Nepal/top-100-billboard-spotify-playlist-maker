@@ -12,11 +12,14 @@ def validate_spotify():
     spotify_id = os.getenv('spotify_id')
     spotify_secret = os.getenv('spotify_secret')
     redirect_url = os.getenv('redirect_url')
-
-    return spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=spotify_id,
-                                                     client_secret=spotify_secret,
-                                                     redirect_uri=redirect_url,
-                                                     scope="playlist-modify-public playlist-modify-private"))
+    user_details = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=spotify_id,
+                                                             client_secret=spotify_secret,
+                                                             redirect_uri=redirect_url,
+                                                             scope="playlist-modify-public playlist-modify-private",
+                                                             username="test"
+                                                             )
+                                   )
+    return user_details
 
 
 def get_song_list(url: str) -> list:
@@ -65,27 +68,26 @@ def create_top_100_playlist(spotify_uris: list, user_id: str, visibility: bool, 
 
     return playlist_id
 
-
-date_to_travel = input('Which year would you like to travel to? Type in YYY-MM-DD format: ')
-print(f'(1/5) Starting the scraping process for top 100 songs of {date_to_travel}')
-billboard_url = f'https://www.billboard.com/charts/hot-100/{date_to_travel}'
-top_100_songs = get_song_list(billboard_url)
-year = date_to_travel[:4]
-
-print('(2/5) Validating your spotify account through OAuth')
-sp = validate_spotify()
-spotify_userid = sp.current_user()['id']
-
-print('(3/5) Finding Spotify ID of the top 100 song')
-spotify_uri_list = convert_song_list_to_spotify_uri(top_100_songs, year, sp)
-
-print('(4/5) Creating a Spotify playlist and adding the songs')
-playlist_visibility = input("Enter Y if you would like the playlist to be public: ")
-if playlist_visibility.upper() == 'Y':
-    playlist_visibility = True
-else:
-    playlist_visibility = False
-playlist = create_top_100_playlist(spotify_uri_list, spotify_userid, playlist_visibility, date_to_travel, sp)
-playlist_url = f'https://open.spotify.com/playlist/{playlist}'
-
-print(f'(5/5) Completed! Open link {playlist_url} for the Playlist in Spotify')
+# date_to_travel = input('Which year would you like to travel to? Type in YYY-MM-DD format: ')
+# print(f'(1/5) Starting the scraping process for top 100 songs of {date_to_travel}')
+# billboard_url = f'https://www.billboard.com/charts/hot-100/{date_to_travel}'
+# top_100_songs = get_song_list(billboard_url)
+# year = date_to_travel[:4]
+#
+# print('(2/5) Validating your spotify account through OAuth')
+# sp = validate_spotify()
+# spotify_userid = sp.current_user()['id']
+#
+# print('(3/5) Finding Spotify ID of the top 100 song')
+# spotify_uri_list = convert_song_list_to_spotify_uri(top_100_songs, year, sp)
+#
+# print('(4/5) Creating a Spotify playlist and adding the songs')
+# playlist_visibility = input("Enter Y if you would like the playlist to be public: ")
+# if playlist_visibility.upper() == 'Y':
+#     playlist_visibility = True
+# else:
+#     playlist_visibility = False
+# playlist = create_top_100_playlist(spotify_uri_list, spotify_userid, playlist_visibility, date_to_travel, sp)
+# playlist_url = f'https://open.spotify.com/playlist/{playlist}'
+#
+# print(f'(5/5) Completed! Open link {playlist_url} for the Playlist in Spotify')

@@ -1,55 +1,78 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Story by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Music of the past</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../static/css/main.css" />
-		<noscript><link rel="stylesheet" href="../static/css/noscript.css" /></noscript>
+  <head>
+    <title>Melodies of the past</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="../static/css/noscript.css"
+    /></noscript>
 
-		<link rel="shortcut icon" href="../static/images/favicon.ico" />
-	</head>
-	<body class="is-preload">
+    <link rel="shortcut icon" href="../static/images/favicon.ico" />
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper" class="divided">
+      <!-- One -->
+      <section
+        id="landing-color"
+        class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right"
+      >
+        <div class="content">
+          <h2><b>Dive into Music Nostalgia!</b></h2>
+          <p class="major">
+            This web-app can be used to prepare a Spotify playlist of top 100
+            billboard songs from any input date. Try it out by signing-in
+            through your Spotify account below
+          </p>
+          <ul class="actions stacked">
+            <li>
+              <a
+                href="{{ url_for('login') }}"
+                class="button big wide smooth-scroll-middle icon solid fa-user"
+                >Login with Spotify</a
+              >
+            </li>
+          </ul>
+          <div class="inner">
+            <p>
+              Design: <a href="https://html5up.net">HTML5 UP</a>.
+              <br />
+              Source code:
+              <a
+                href="https://github.com/Jay-Nepal/top-100-billboard-spotify-playlist-maker"
+                >GitHub link</a
+              >.
+            </p>
+            <a
+              href="https://github.com/Jay-Nepal/"
+              class="icon brands style2 fa-github"
+              ><span class="label">Github</span></a
+            >
+          </div>
+        </div>
+        <div class="image">
+          <img src="../static/images/banner.jpg" alt="" />
+        </div>
+      </section>
+    </div>
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="divided">
-
-				<!-- One -->
-					<section id="landing-image" class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
-						<div class="content">
-							<h2><b>Dive into Music Nostalgia</b></h2>
-							<p class="major">Dive into music nostalgia by preparing a spotify playlist of top 100 billboard songs from any date! Try it out by signing through Spotify below</p>
-							<ul class="actions stacked">
-								<li><a href="#first" class="button big wide smooth-scroll-middle">Login with Spotify</a></li>
-							</ul>
-							<div class="inner">
-								<p> Design: <a href="https://html5up.net">HTML5 UP</a>.
-									<br>
-									Source code: <a href="https://github.com/Jay-Nepal/top-100-billboard-spotify-playlist-maker">GitHub link</a>.
-								</p>
-								<a href="https://github.com/Jay-Nepal/" class="icon brands style2 fa-github"><span class="label">Github</span></a>
-							</div>
-						</div>
-						<div class="image">
-							<img src="../static/images/banner.jpg" alt="" />
-						</div>
-					</section>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="../static/js/jquery.min.js"></script>
-			<script src="../static/js/jquery.scrollex.min.js"></script>
-			<script src="../static/js/jquery.scrolly.min.js"></script>
-			<script src="../static/js/browser.min.js"></script>
-			<script src="../static/js/breakpoints.min.js"></script>
-			<script src="../static/js/util.js"></script>
-			<script src="../static/js/main.js"></script>
-
-	</body>
+    <!-- Scripts -->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/jquery.scrollex.min.js"></script>
+    <script src="../static/js/jquery.scrolly.min.js"></script>
+    <script src="../static/js/browser.min.js"></script>
+    <script src="../static/js/breakpoints.min.js"></script>
+    <script src="../static/js/util.js"></script>
+    <script src="../static/js/main.js"></script>
+  </body>
 </html>
