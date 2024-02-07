@@ -8,4 +8,4 @@ It is currently being developed and the live progress can be seen here: https://
 ## Self-hosting
 The code isn't currently complete, but is being actively developed. The legacy algorithm script is in the main.py file, but it is being refactored to work in the front-end slowly and incorporated into app.py
 
-To run the program in a local environment, please create a .env file in the same directory as the app.py file with your Spotify credentials 
+To run the program in a local environment, please create a .env file in the same directory as the app.py file with your Spotify dev credentials for a project
