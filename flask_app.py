@@ -6,7 +6,7 @@ import secrets
 
 load_dotenv()
 
-# The developer ID and credentials from Spotify. Store them in a .env file in root directory
+# The developer ID and credentials from Spotify. Store them in a .env file in the root directory
 SPOTIPY_CLIENT_ID = os.getenv('spotify_id')
 SPOTIPY_CLIENT_SECRET = os.getenv('spotify_secret')
 SPOTIPY_REDIRECT_URI = os.getenv('redirect_url')
@@ -53,12 +53,21 @@ def profile():
     token_info = session.get('token_info')
     # Send user back to index page if they aren't logged in and try accessing profile
     if not token_info:
+        # We can add a render new template that shows the error and then only redirects here
         return redirect(url_for('index'))
 
     sp = Spotify(auth=token_info['access_token'])
     user_profile = sp.current_user()
+    user_name = user_profile["display_name"]
+    print(user_profile)
+    return render_template('profile.html', name=user_name)
 
-    return f'Logged in as {user_profile["display_name"]}'
+
+@app.route('/logout')
+def logout():
+    # Clear the session
+    session.clear()
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
