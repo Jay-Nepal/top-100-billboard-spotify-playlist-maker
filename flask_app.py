@@ -3,6 +3,7 @@ from spotipy import Spotify, oauth2
 import os
 from dotenv import load_dotenv
 import secrets
+from main import get_song_list, convert_song_list_to_spotify_uri, create_top_100_playlist
 
 load_dotenv()
 
@@ -48,7 +49,7 @@ def callback():
     return redirect(url_for('profile'))
 
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
     token_info = session.get('token_info')
     # Send user back to index page if they aren't logged in and try accessing profile
@@ -59,7 +60,28 @@ def profile():
     sp = Spotify(auth=token_info['access_token'])
     user_profile = sp.current_user()
     user_name = user_profile["display_name"]
-    print(user_profile)
+    spotify_userid = sp.current_user()['id']
+
+    if request.method == 'POST':
+        date_of_playlist = request.form.get('date')
+        name_of_playlist = request.form.get('name')
+        desc_of_playlist = request.form.get('desc')
+        visibility_of_playlist = bool(request.form.get('copy'))
+        year = date_of_playlist[:4]
+
+        top_100_songs = get_song_list(date_of_playlist)
+        spotify_uri_list = convert_song_list_to_spotify_uri(top_100_songs, year, sp)
+        playlist = create_top_100_playlist(spotify_uri_list,
+                                           name_of_playlist,
+                                           desc_of_playlist,
+                                           spotify_userid,
+                                           visibility_of_playlist,
+                                           date_of_playlist, sp)
+        playlist_url = f'https://open.spotify.com/playlist/{playlist}'
+        print(playlist_url)
+
+        return render_template('profile.html', name=user_name)
+
     return render_template('profile.html', name=user_name)
 
 

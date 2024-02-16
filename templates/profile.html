@@ -1,11 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Story by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-
-	Note: Only needed for demo purposes. Delete for production sites.
--->
 <html>
 	<!--  Head -->
   	{% include "head.html" %}
@@ -13,58 +6,52 @@
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper" class="divided">
+		<div id="wrapper" class="divided">
 
-				<!-- Spotlight -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="landing-color">
-						<div class="content">
-							<h2>Hi {{ name }}!</h2>
-							<p>Fill out the form below and submit!</p>
-							<ul class="actions stacked">
-								<li><a href="{{ url_for('logout') }}#" class="button">Log Out</a></li>
-							</ul>
-						</div>
-					</section>
-			</div>
-
-			<section class="wrapper style1 align-center">
-				<div class="inner">
-					<div class="content">
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field half">
-									<label for="name">Name of the playlist</label>
-									<input type="text" name="name" id="name" value="Top 100 songs from" />
-								</div>
-								<div class="field half">
-									<label for="name">Description for the playlist</label>
-									<input type="text" name="desc" id="desc" value="Created using Spotipy" />
-								</div>
-								<div class="field half">
-									<label for="email">Enter the date</label>
-									<input type="date" name="date" id="date" value="" />
-								</div>
-								<div class="field half">
-									<input type="checkbox" id="copy" name="copy" />
-									<label for="copy">Make Public?</label>
-								</div>
-							</div>
-						</form>
-					</div>
+			<!-- Spotlight -->
+			<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="landing-color">
+				<div class="content">
+					<h2>Hi {{ name }}!</h2>
+					<p>Fill out the form below and submit to create a playlist</p>
+					<ul class="actions stacked">
+						<li><a href="{{ url_for('logout') }}#" class="button">Log Out</a></li>
+					</ul>
 				</div>
 			</section>
+		</div>
+
+		<section class="wrapper style1 align-center">
+			<div class="inner">
+				<div class="content">
+					<form method="POST" action="#">
+						<div class="fields">
+							<div class="field half">
+								<label for="name">Name of the playlist</label>
+								<input type="text" name="name" id="name" value="Top 100 songs from" required/>
+							</div>
+							<div class="field half">
+								<label for="desc">Description for the playlist</label>
+								<input type="text" name="desc" id="desc" value="Created using Spotipy" required />
+							</div>
+							<div class="field half">
+								<label for="date">Enter the date</label>
+								<input type="date" name="date" id="date" value="" required />
+							</div>
+							<div class="field half">
+								<input type="checkbox" id="copy" name="copy" />
+								<label for="copy">Make Public?</label>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" name="submit" id="submit" value="Create Playlist" /></li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</section>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-		<!-- Note: Only needed for demo purposes. Delete for production sites. -->
-			<script src="assets/js/demo.js"></script>
+		{% include "script.html" %}
 
 	</body>
 </html>
